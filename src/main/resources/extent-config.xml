@@ -1,0 +1,19 @@
+<configuration>
+    <!-- Report Configuration settings-->
+    <documentTitle>Automation Test Report</documentTitle>
+    <reportName>RiderPlan Functionality Testing</reportName>
+    <theme>STANDARD</theme>
+    <encoding>UTF-8</encoding>
+    <protocol>HTTPS</protocol>
+    <enableTimeLine>true</enableTimeLine>
+    <!-- <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+     <reportHeadline>Rider Plan - Test Execution Report</reportHeadline>
+     <styles>
+         .test {
+         border: 1px solid #ccc;
+         }
+     </styles>
+     <scripts>
+         console.log('ExtentReports configuration setup');
+     </scripts>-->
+</configuration>
