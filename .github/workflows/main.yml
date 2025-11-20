@@ -16,13 +16,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Java and Maven
-      run: java -version
-           mvn -version
+    - name: Add Maven to PATH
+      shell: powershell
+      run: |
+        $mvn= "C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.11\bin"
+        echo "PATH=$mvn;$env:PATH" >> $env:GITHUB_ENV
 
-      
-
-   
+    - name: Check Java and Maven versions
+      shell: powershell
+      run: |
+        java -version
+        mvn -version
 
     - name: Run tests
       run: mvn -X test
