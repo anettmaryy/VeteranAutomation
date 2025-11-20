@@ -20,15 +20,3 @@ jobs:
 
     - name: Run tests
       run: mvn -X test
-
-    - name: Archive test results
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: target/surefire-reports
-
-    - name: Archive build artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-artifacts
-        path: target/*.jar
