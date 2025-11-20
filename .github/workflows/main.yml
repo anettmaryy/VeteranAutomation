@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '30 0 * * *'
 
 jobs:
   build:
@@ -19,8 +21,8 @@ jobs:
     - name: Add Maven to PATH
       shell: powershell
       run: |
-        $mvn= "C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.11\bin"
-        echo "PATH=$mvn;$env:PATH" >> $env:GITHUB_ENV
+        $mvn = "C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.11\bin"
+        Add-Content -Path $env:GITHUB_ENV -Value "PATH=$mvn;$env:PATH"
 
     - name: Check Java and Maven versions
       shell: powershell
@@ -29,4 +31,5 @@ jobs:
         mvn -version
 
     - name: Run tests
+      shell: powershell
       run: mvn -X test
