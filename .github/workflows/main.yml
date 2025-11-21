@@ -34,9 +34,4 @@ jobs:
       shell: powershell
       run: mvn -X test
 
-    - name: Upload Cucumber HTML Report
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: cucumber-html-report
-        path: C:\temp\Program Files\Automation Project\BDD Cucumber\VeteranRegression\target\reports\report.html
+    
