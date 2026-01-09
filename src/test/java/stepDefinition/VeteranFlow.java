@@ -92,10 +92,21 @@ public class VeteranFlow extends BaseTest {
 
     @Then("user navigate to activity group page")
     public void navigatesToActivityGroupPage() {
-        WebElement headerElement = driver.findElement(By.xpath("//h2[text()='Select your activity group']"));
+        // Create a WebDriverWait instance with a timeout using Duration
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait until the header element is visible
+        WebElement headerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Select your activity group']")));
+
+        // Get the text of the header element
         String headerText = headerElement.getText();
+
+        // Assert that the text is as expected
         Assert.assertEquals("Select your activity group", headerText);
+
+        // Print a success message
         System.out.println("Landed on Activity Group page successfully");
+
     }
 
     @When("user selecting activity {string}")
@@ -109,9 +120,19 @@ public class VeteranFlow extends BaseTest {
 
     @Then("user navigate to cover selection page")
     public void navigatesToCoverSelectionPage() {
-        WebElement headerElement = driver.findElement(By.xpath("//h2[text()='Choice of cover']"));
+        // Create a WebDriverWait instance with a timeout (e.g., 10 seconds)
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+
+        // Wait until the header element is present and its text is 'Choice of cover'
+        WebElement headerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Choice of cover']")));
+
+        // Get the text of the header element
         String headerText = headerElement.getText();
+
+        // Assert that the text is as expected
         Assert.assertEquals("Choice of cover", headerText);
+
+        // Print a success message
         System.out.println("Landed cover selection page successfully");
     }
 
@@ -221,9 +242,19 @@ public class VeteranFlow extends BaseTest {
 
     @Then("user lands on Summary")
     public void userLandsOnSummary() {
-        WebElement headerElement = driver.findElement(By.xpath("//h2[text()='Summary']"));
+        // Create a WebDriverWait instance with a timeout using Duration
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait until the header element is visible
+        WebElement headerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Summary']")));
+
+        // Get the text of the header element
         String headerText = headerElement.getText();
+
+        // Assert that the text is as expected
         Assert.assertEquals("Summary", headerText);
+
+        // Print a success message
         System.out.println("Landed Summary page successfully");
     }
 
@@ -247,15 +278,27 @@ public class VeteranFlow extends BaseTest {
     }
 
     @Then("user lands on Payment section")
-    public void userLandsOnPaymentSection(){
-    try {
-        WebElement headerElement = driver.findElement(By.xpath("//h2[text()='Payment']"));
-        String headerText = headerElement.getText();
-        Assert.assertEquals("Payment", headerText);
-        System.out.println("Landed Payment Summary page successfully");
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
+    public void userLandsOnPaymentSection() {
+        try {
+            // Create a WebDriverWait instance with a timeout using Duration
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+            // Wait until the header element is visible
+            WebElement headerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Payment']")));
+
+            // Get the text of the header element
+            String headerText = headerElement.getText();
+
+            // Assert that the text is as expected
+            Assert.assertEquals("Payment", headerText);
+
+            // Print a success message
+            System.out.println("Landed Payment Summary page successfully");
+        } catch (Exception e) {
+            // Handle exceptions and provide informative error messages
+            System.err.println("Failed to land on Payment Summary page: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     @Then("user lands on Payment CreditorDebit section")
