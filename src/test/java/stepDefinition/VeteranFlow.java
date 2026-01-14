@@ -200,6 +200,9 @@ public class VeteranFlow extends BaseTest {
 
     @Then("user navigate to history page")
     public void userNavigateToHistoryPage() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text()='History']")));
         WebElement headerElement = driver.findElement(By.xpath("//h2[text()='History']"));
         String headerText = headerElement.getText();
         Assert.assertEquals("History", headerText);
